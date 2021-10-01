@@ -1,5 +1,10 @@
 <h2>Users</h2>
-<button class="btn btn-block mb-3">Add New User</button>
+<button
+  (click)="addUser({ firstName: 'Mary', lastName: 'Williams', isActive: true })"
+  class="btn btn-block mb-3"
+>
+  Add New User
+</button>
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0">
   <li
     class="card card-body mb-2"
