@@ -7,10 +7,21 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: undefined,
+    address: {
+      street: '',
+      city: '',
+      state: '',
+    },
+  };
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  showUserForm: boolean = false;
 
   constructor() {}
 
@@ -28,6 +39,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: true,
           registered: new Date('01/02/2018 08:30:00'),
+          hide: true,
         },
         {
           firstName: 'Jack',
@@ -40,6 +52,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: true,
           registered: new Date('03/11/2018 06:30:00'),
+          hide: true,
         },
         {
           firstName: 'Jacky',
@@ -52,6 +65,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: false,
           registered: new Date('11/02/2018 08:30:00'),
+          hide: true,
         },
       ];
 
@@ -59,7 +73,29 @@ export class UsersComponent implements OnInit {
     }, 2000);
   }
 
-  addUser(user: User) {
-    this.users.push(user);
+  addUser() {
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
+
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: undefined,
+      address: {
+        street: '',
+        city: '',
+        state: '',
+      },
+    };
+  }
+
+  toggleHide(user: User) {
+    user.hide = !user.hide;
+  }
+
+  onSubmit(e: any) {
+    console.log(123);
+    e.preventDefault();
   }
 }
