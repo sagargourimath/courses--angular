@@ -10,12 +10,7 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstName: '',
     lastName: '',
-    age: undefined,
-    address: {
-      street: '',
-      city: '',
-      state: '',
-    },
+    email: '',
   };
   users: User[];
   showExtended: boolean = true;
@@ -31,12 +26,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'John',
           lastName: 'Doe',
-          age: 30,
-          address: {
-            street: '50 Main St',
-            city: 'Boston',
-            state: 'MA',
-          },
+          email: 'john@gmail.com',
           isActive: true,
           registered: new Date('01/02/2018 08:30:00'),
           hide: true,
@@ -44,12 +34,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'Jack',
           lastName: 'Doe',
-          age: 30,
-          address: {
-            street: '50 Main St',
-            city: 'Boston',
-            state: 'MA',
-          },
+          email: 'john@gmail.com',
           isActive: true,
           registered: new Date('03/11/2018 06:30:00'),
           hide: true,
@@ -57,12 +42,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'Jacky',
           lastName: 'Doe',
-          age: 30,
-          address: {
-            street: '50 Main St',
-            city: 'Boston',
-            state: 'MA',
-          },
+          email: 'john@gmail.com',
           isActive: false,
           registered: new Date('11/02/2018 08:30:00'),
           hide: true,
@@ -71,27 +51,6 @@ export class UsersComponent implements OnInit {
 
       this.loaded = true;
     }, 2000);
-  }
-
-  addUser() {
-    this.user.isActive = true;
-    this.user.registered = new Date();
-    this.users.unshift(this.user);
-
-    this.user = {
-      firstName: '',
-      lastName: '',
-      age: undefined,
-      address: {
-        street: '',
-        city: '',
-        state: '',
-      },
-    };
-  }
-
-  toggleHide(user: User) {
-    user.hide = !user.hide;
   }
 
   onSubmit(e: any) {

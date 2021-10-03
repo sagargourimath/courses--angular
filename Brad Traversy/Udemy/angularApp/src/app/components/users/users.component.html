@@ -23,17 +23,16 @@
       />
     </div>
     <div class="form-group">
-      <label>Age</label>
+      <label>Email</label>
       <input
-        type="number"
+        type="email"
         class="form-control"
-        name="age"
-        [(ngModel)]="user.age"
+        name="email"
+        [(ngModel)]="user.email"
       />
     </div>
 
     <button
-      (click)="addUser()"
       class="btn btn-block mb-3"
       [disabled]="user.firstName == '' || user.lastName == ''"
     >
@@ -50,19 +49,16 @@
   >
     <h3>
       {{ user.firstName }} {{ user.lastName }}
-      <small *ngIf="user.age && user.address"
-        ><button (click)="toggleHide(user)" class="btn btn-dark btn-sm">
+      <small
+        ><button (click)="user.hide = !user.hide" class="btn btn-dark btn-sm">
           <i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button
       ></small>
     </h3>
 
-    <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
+    <ul class="list-group" *ngIf="!user.hide">
       <ul>
-        <li class="list-group-item">Age: {{ user.age }}</li>
-        <li class="list-group-item">
-          Address: {{ user?.address?.street }} {{ user?.address?.city }}
-          {{ user?.address?.state }}
-        </li>
+        <li class="list-group-item">Email: {{ user.email }}</li>
+
         <li class="list-group-item">Joined: {{ user.registered | date }}</li>
       </ul>
     </ul>
